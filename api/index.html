@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story CRUD Operation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+   <div class="container mt-5">
+       <h2 class="mb-4">Story CRUD Operation</h2>
+
+ 
+       <div class="form-group" id="createForm">
+           <label for="createTitle">Title:</label>
+           <input type="text" class="form-control" id="createTitle" required value="new story">
+       </div>
+       <div class="form-group">
+           <label for="createcontent">Content:</label>
+           <input type="text" class="form-control" id="createcontent" required value="new content">
+       </div>
+       <br>
+       <button id="createBtn" type="button" class="btn btn-primary">Create</button>
+       <button id="clearBtn" type="button" class="btn btn-secondary" style="display: none;">Clear</button>
+       <hr>
+
+       <div id="storiesList"></div>
+   </div>
+
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <script src="./index.js"></script>
+</body>
+</html>

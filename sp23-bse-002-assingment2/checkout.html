@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  
+    <div class="container my-5">
+        <div class="row">
+            
+            <div class="col-md-7">
+                <h3 class="mb-4">Contact Information</h3>
+                <form id="checkoutForm"> 
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="dob">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select id="gender" class="form-select">
+                                <option selected>Select Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="newsOffers">
+                        <label class="form-check-label" for="newsOffers">Email me with news and offers</label>
+                    </div>
+
+                  
+                    <h3 class="mb-4">Shipping Address</h3>
+                    <div class="mb-3">
+                        <label for="streetAddress" class="form-label">Street Address: Line 1</label>
+                        <input type="text" class="form-control" id="streetAddress" placeholder="Street Address">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            <select id="country" class="form-select">
+                                <option selected>Pakistan</option>
+                                <option selected>UAE</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="region" class="form-label">Region/State/Province</label>
+                            <select id="region" class="form-select">
+                                <option selected>Punjab</option>
+                                <option selected>sindh</option>
+                                <option selected>balochistan</option>
+                                <option selected>kpk</option>
+                                <option selected>azad kashmir and gilgit baltistan</option>
+                                <option selected>Islamabad</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <select id="city" class="form-select">
+                                <option selected>Lahore</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="area" class="form-label">Area</label>
+                            <input type="text" class="form-control" id="area" placeholder="Area">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phoneNumber" placeholder="0300xxxxxxx">
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100 mt-4">Place Order</button> <!-- Submit button -->
+                </form>
+            </div>
+
+          
+            <div class="col-md-5">
+                <div class="border p-4 rounded">
+                    <h4 class="mb-4">Order Summary</h4>
+                    <div class="d-flex justify-content-between mb-3">
+                        <p>Product Name:</p>
+                        <p>2PC Unstitched Embroidered Lawn Suit TL-42081</p>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <p>Qty:</p>
+                        <p>1</p>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <p>Subtotal:</p>
+                        <p>PKR 5,994.00</p>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <p>Shipping:</p>
+                        <p>PKR 99.00</p>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <h5>Total:</h5>
+                        <h5>PKR 6,093.00</h5>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="mt-4">
+                    <h4 class="mb-3">Payment Methods</h4>
+                    <form>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="cod" checked>
+                            <label class="form-check-label" for="cod">
+                                Cash on Delivery
+                            </label>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.getElementById("checkoutForm").addEventListener("submit", function (e) {
+            // Select all required fields
+            const email = document.getElementById("email").value.trim();
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const dob = document.getElementById("dob").value;
+            const gender = document.getElementById("gender").value;
+            const streetAddress = document.getElementById("streetAddress").value.trim();
+            const country = document.getElementById("country").value;
+            const region = document.getElementById("region").value;
+            const city = document.getElementById("city").value;
+            const area = document.getElementById("area").value.trim();
+            const phoneNumber = document.getElementById("phoneNumber").value.trim();
+    
+           
+            let isValid = true;
+            let errorMessage = "";
+    
+            
+            if (!email) {
+                isValid = false;
+                errorMessage += "Email is required.\n";
+            }
+            if (!firstName) {
+                isValid = false;
+                errorMessage += "First name is required.\n";
+            }
+            if (!lastName) {
+                isValid = false;
+                errorMessage += "Last name is required.\n";
+            }
+            if (!dob) {
+                isValid = false;
+                errorMessage += "Date of birth is required.\n";
+            }
+            if (gender === "Select Gender") {
+                isValid = false;
+                errorMessage += "Please select your gender.\n";
+            }
+            if (!streetAddress) {
+                isValid = false;
+                errorMessage += "Street address is required.\n";
+            }
+            if (!country) {
+                isValid = false;
+                errorMessage += "Country is required.\n";
+            }
+            if (!region) {
+                isValid = false;
+                errorMessage += "Region is required.\n";
+            }
+            if (!city) {
+                isValid = false;
+                errorMessage += "City is required.\n";
+            }
+            if (!area) {
+                isValid = false;
+                errorMessage += "Area is required.\n";
+            }
+            if (!phoneNumber || !/^\d{4}\d{7}$/.test(phoneNumber)) {
+                isValid = false;
+                errorMessage += "Valid phone number is required (e.g., 0300xxxxxxx).\n";
+            }
+    
+           
+            if (!isValid) {
+                alert(errorMessage);
+                e.preventDefault();
+            } else {
+                alert("Form submitted successfully!");
+            }
+        });
+    </script>
+  
+</body>
+
+</html>

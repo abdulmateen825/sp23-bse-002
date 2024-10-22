@@ -1,0 +1,146 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px auto;
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.left-column {
+    width: 35%;
+    background-color: #646b64;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: block;
+    border: 5px solid white;
+    object-fit: cover;
+}
+
+h1, h2 {
+    margin: 15px 0;
+}
+
+p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+
+.right-column {
+    width: 65%;
+    padding: 30px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #4c5a4c;
+    padding-bottom: 5px;
+}
+
+.skills-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.skills-list li {
+    margin-bottom: 10px;
+}
+
+.skill {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.skill-bar {
+    width: 80%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-left: 15px;
+    position: relative;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background-color: #524b47;
+    border-radius: 5px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+ul ul {
+    margin-left: 20px;
+}
+
+
+li {
+    line-height: 1.6;
+}
+.left-column {
+    position: relative; 
+    width: 35%;
+    background-color: #646b64;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.intro-message {
+    background-color: rgba(255, 255, 255, 0.9); 
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    position: fixed; 
+    z-index: 10;
+    width: 250px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    top: 50px; 
+    right: 160px; 
+    transition: opacity 0.3s ease; 
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+.intro-message.show {
+    opacity: 1; 
+    pointer-events: auto; 
+}
+
+
+
+

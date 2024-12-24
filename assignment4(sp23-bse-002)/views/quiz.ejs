@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <style>
+    .quiz-container { max-width: 800px; margin: 2rem auto; padding: 1rem; }
+    .options { list-style: none; padding: 0; }
+    .options li { margin: 1rem 0; }
+    #next-btn { padding: 0.5rem 1rem; margin-top: 1rem; }
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .product-card h3 { margin-top: 0; }
+    .product-category {
+      background: #f0f0f0;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .product-image {
+      max-width: 30%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Product Recommendation Quiz</h1>
+    <div id="quiz-content">
+      <div class="question"></div>
+      <ul class="options"></ul>
+      <button id="next-btn">Next</button>
+    </div>
+    <div id="results" style="display: none">
+      <h2>Your Recommendations</h2>
+      <div id="recommendations-list"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const questions = [
+        { question: "Select a category:", options: [] },
+        { question: "What's your budget?", options: ["Under $50", "$50-$100", "Above $100"] },
+      ];
+
+      let currentQuestionIndex = 0;
+      const answers = [];
+      
+      const quizContent = document.getElementById('quiz-content');
+      const results = document.getElementById('results');
+      const questionEl = document.querySelector('.question');
+      const optionsEl = document.querySelector('.options');
+      const nextBtn = document.querySelector('#next-btn');
+      const recommendationsList = document.getElementById('recommendations-list');
+
+      async function fetchCategories() {
+        try {
+          const response = await fetch('/quiz/categories');
+          const categories = await response.json();
+          questions[0].options = categories.map(category => ({
+            id: category._id,
+            title: category.title
+          }));
+          loadQuestion();
+        } catch (error) {
+          console.error('Error fetching categories:', error);
+          questionEl.textContent = 'Error loading quiz. Please try again.';
+        }
+      }
+
+      function loadQuestion() {
+        const currentQuestion = questions[currentQuestionIndex];
+        questionEl.textContent = currentQuestion.question;
+        optionsEl.innerHTML = '';
+        
+        currentQuestion.options.forEach(option => {
+          const li = document.createElement('li');
+          const isCategory = currentQuestionIndex === 0;
+          const value = isCategory ? option.id : option;
+          const label = isCategory ? option.title : option;
+          
+          li.innerHTML = `<input type="radio" name="option" value="${value}"> ${label}`;
+          optionsEl.appendChild(li);
+        });
+      }
+
+      function displayRecommendations(products) {
+        quizContent.style.display = 'none';
+        results.style.display = 'block';
+        
+        if (products.length === 0) {
+          recommendationsList.innerHTML = '<p>No products match your criteria.</p>';
+          return;
+        }
+        
+        recommendationsList.innerHTML = products.map(product => `
+          <div class="product-card">
+            <img 
+              src="/uploads/${product.picture || 'images/placeholder.jpg'}" 
+              alt="${product.name}" 
+              class="product-image"
+              onerror="this.src='/images/placeholder.jpg'"
+            >
+            <h3>${product.title}</h3>
+            <p class="product-category">${product.category.title}</p>
+            ${product.description ? `<p>${product.description}</p>` : ''}
+            <p class="product-price">$${product.price.toFixed(2)}</p>
+          </div>
+        `).join('');
+      }
+
+      nextBtn.addEventListener('click', async () => {
+        const selectedOption = document.querySelector('input[name="option"]:checked');
+        
+        if (!selectedOption) {
+          alert('Please select an option!');
+          return;
+        }
+
+        answers.push(selectedOption.value);
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < questions.length) {
+          loadQuestion();
+        } else {
+          try {
+            const response = await fetch('/quiz/recommendations', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ answers })
+            });
+            const products = await response.json();
+            displayRecommendations(products);
+          } catch (error) {
+            console.error('Error getting recommendations:', error);
+            alert('Error getting recommendations. Please try again.');
+          }
+        }
+      });
+
+      fetchCategories();
+    });
+  </script>
+</body>
+</html>

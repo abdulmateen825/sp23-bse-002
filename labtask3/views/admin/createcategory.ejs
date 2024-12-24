@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h4 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #4a4a4a;
+            margin-bottom: 30px;
+        }
+        p {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #6c757d;
+        }
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            padding: 12px 18px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #6c5ce7;
+            box-shadow: 0 0 0 0.2rem rgba(108, 92, 231, 0.25);
+        }
+        .form-check-input {
+            transform: scale(1.2);
+            margin-left: 10px;
+        }
+        .btn-info {
+            background-color: #6c5ce7;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            color: white;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-info:hover {
+            background-color: #4e41d7;
+            transform: translateY(-3px);
+        }
+        .btn-info:active {
+            background-color: #4530b7;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h4>Create New Product</h4>
+    <p>If the action attribute is empty, the form will be submitted to the same URL on which it's rendered.</p>
+    <p>GET is the default submission method.</p>
+
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input name="title" id="title" type="text" class="form-control" value="IPhone" required/>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" class="form-control" rows="4" required>This is IPhone desc</textarea>
+        </div>
+       
+       
+        <hr>
+        <hr>
+      
+
+        <div class="form-group">
+            <button class="btn btn-info">Create Category</button>
+        </div>
+    </form>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Product</title>
+    <style>
+        /* Your styles from previous response go here */
+    </style>
+</head>
+<body>
+<div class="parentContainer">
+    <div class="form-container">
+        <h2>Create New Product</h2>
+        <form action="" class="container" method="post">
+            
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input name="title" type="text" class="form-control" value="IPhone" required />
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control" required>This is iPhone desc</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input name="price" type="number" class="form-control" value="5000" required />
+            </div>
+
+            <div>
+                <label>Category</label>
+                <select name="category">
+                  <% categories.forEach(category => { %>
+                    <option value="<%= category._id %>"><%= category.title %></option>
+                  <% }); %>
+                </select>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="isFeatured">
+                    <input name="isFeatured" type="checkbox" class="form-check-input" />
+                    Featured?
+                </label>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-info">Create Record</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

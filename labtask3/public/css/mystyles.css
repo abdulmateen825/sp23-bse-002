@@ -1,0 +1,11 @@
+/* This is my styles file */
+
+h1{
+    background-color: cadetblue;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#menu li{
+    display: inline;
+}
